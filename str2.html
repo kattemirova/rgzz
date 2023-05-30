@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Темирова Екатерина. РГЗ</title>
+    <link rel="stylesheet" href="main.css">
+    <script>
+        function sharePrice() {
+            let table = document.getElementById('course');
+         
+            let date = ['Дата', '21.04.2023', '22.04.2023', '24.04.2023', '25.04.2023', '26.04.2023', 
+                        '27.04.2023', '28.04.2023', '02.05.2023', '03.05.2023', '04.05.2023', 
+                        '05.05.2023', '08.05.2023', '10.05.2023', '11.05.2023', '12.05.2023', 
+                        '15.05.2023', '16.05.2023', '17.05.2023', '18.05.2023', '19.05.2023'];
+            let price = ['Цена', 794.2, 794.6, 789.4, 788.4, 784.6,
+                        800, 785.8, 755, 723.2, 748,
+                        750, 742.8, 772.6, 763, 770.8,
+                        789, 778.2, 781.2, 777.6, 790];
+
+            for (let i = 0; i < date.length; i++) {
+                let trDate = document.createElement('tr');
+                let tdDate = document.createElement('td');
+                tdDate.innerHTML = date[i];
+                tdDate.style.width = '165px';
+                tdDate.style.height = '50px';
+                tdDate.style.textAlign = 'center';
+                let tdPrice = document.createElement('td');
+                tdPrice.innerHTML = price[i];
+                tdPrice.style.width = '165px';
+                tdPrice.style.height = '50px';
+                tdPrice.style.textAlign = 'center';
+                trDate.appendChild(tdDate);
+                trDate.appendChild(tdPrice);
+                table.appendChild(trDate);
+            }  
+
+            let sum = 0;
+            for (let i = 1; i < price.length; i++) {
+                sum = sum + price[i];
+            }
+            let average1 = sum / (price.length-1);
+            let difference = [];
+            for (let i = 1; i < price.length; i++) {
+                difference.push(price[i] - average1);
+            }
+            let squery = [];
+            for (let i = 0; i < difference.length; i++) {
+                squery.push(difference[i] * difference[i]);
+            }
+            let average2 = 0;
+            for (let i = 0; i < squery.length; i++) {
+                average2 = average2 + squery[i];
+            }
+            let average3 = average2 / squery.length;
+            let root = Math.sqrt(average3);
+            document.getElementById('details').innerHTML = 'Среднеквадратическое отклонение: ' + root.toFixed(3);
+
+            let max = price[1];
+            for (let i = 1; i < price.length; i++) {
+                if (price[i] > max) {
+                    max = price[i];
+                }
+            }
+            document.getElementById('details2').innerHTML = 'Максимальное значение: ' + max;   
+
+            let min = price[1];
+            for (let i = 1; i < price.length; i++) {
+                if (price[i] < min) {
+                    min = price[i];
+                }
+            document.getElementById('details3').innerHTML = 'Минимальное значение: ' + min;
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <img src="logo.jpg" style="width:200px; height: 70px; margin-left: 150px;">
+    </header>
+    <main>
+        <div class="text">
+            <h1 style="color: #6b5637; font: 30px 'Roboto'; margin-bottom: -15px;">Основные финансовые показатели</h1>
+        </div>
+        <div class="text">
+            <h4 style="color: #6b5637; margin: 10px 0;">Капитализация на 2022 год</h4>
+            <b><i>88.9 млрд RUB </i></b>
+            <hr>
+            <h4 style="color: #6b5637; margin: 10px 0;">Общее число акций</h4>
+            <b><i>134.53 млн RUB</i></b>
+            <hr>
+            <h4 style="color: #6b5637; margin: 10px 0;" onclick="sharePrice()">Курс акций компании Русагро (нажмите на текст)</h4>
+            <table border="1" id="course"></table>
+            <div style="color: #6b5637; margin: 10px 0;" id="details"></div>
+            <div style="color: #6b5637; margin: 10px 0;" id="details2"></div>
+            <div style="color: #6b5637; margin: 10px 0;" id="details3"></div>
+        </div>  
+        <div class="menu">
+            <h1 style=" color: #6b5637; font: 30px 'Roboto'; margin: 20px 0; padding: 10px; text-align: center;">Навигация по сайту Русагро</h1>
+            <ul>
+                <li style="margin: 10px;">
+                    <a href="str1.html"; target="_blank">О компании</a>
+                </li>
+                <li style="margin: 10px;">
+                    <a style="color: #584a37;" href="str2.html"; target="_blank">Основные финансовые показатели</a>
+                </li>
+                <li style="margin: 10px;">
+                    <a href="str3.html"; target="_blank">Контакты</a>
+                </li>
+                <li style="margin: 10px;">
+                    <a href="str4.html"; target="_blank">Видео</a>
+                </li>
+            </ul>
+        </div>  
+    </main>
+    <footer style="position: fixed;">
+        &copy; Темирова Екатерина Рустамовна РГЗ 2023<br>
+        2021. Все права защищены. ООО «Группа Компаний «Русагро». Я не воровала-меня заставили!
+    </footer>
+</body>
+</html>
