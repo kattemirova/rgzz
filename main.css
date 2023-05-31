@@ -2,8 +2,10 @@ body {
     background-color: white;
     color: black;
     font: 14px Arial;
+    width: 100%;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
 header {
@@ -18,7 +20,7 @@ header {
 }
 
 main {
-    width: 655px;
+    width: 40%;
     height: 100%;
     margin-left: 350px;
     margin-right: 380px;
@@ -43,6 +45,7 @@ footer {
     color: #908f8f;
     text-align: justify; 
     height: 100%;
+    width: 100%;
 }
 
 .menu {
